@@ -40,7 +40,7 @@
 
 ### 모의투자 서비스 페이지
 
-![https://im.ezgif.com/tmp/ezgif-1-01afafe1c9.gif](https://im.ezgif.com/tmp/ezgif-1-01afafe1c9.gif)
+![image](README.assets/image.gif)
 
 - `React-DnD` 활용한 드래그앤 드랍
     - (매수 / 매도)할 주식 종목을 쉽게 드래그 앤 드랍을 통해 사용자 경험 개선
