@@ -21,8 +21,8 @@ interface TradeStockItem {
 }
 
 const TradeStockList = () => {
-  const { data: myStock, isSuccess: isMyStockSuccess } = useMyStocks()
-  const { data: wholeStock, isSuccess: isWholeStockSuccess } = useWholeStocks()
+  // const { data: myStock, isSuccess: isMyStockSuccess } = useMyStocks()
+  // const { data: wholeStock, isSuccess: isWholeStockSuccess } = useWholeStocks()
 
   const [value, setValue] = useState(0)
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -34,25 +34,31 @@ const TradeStockList = () => {
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value)
   }
-
-  useEffect(() => {
-    if (!searchInput.trim()) {
-      setSearchData([])
-      return
-    }
-    if (value === 0 && myStock)
-      setSearchData(
-        myStock.filter((stock: TradeStockItem) => {
-          return stock.name.toUpperCase().includes(searchInput.toUpperCase())
-        })
-      )
-    if (value === 1 && wholeStock)
-      setSearchData(
-        wholeStock.filter((stock: TradeStockItem) => {
-          return stock.name.toUpperCase().includes(searchInput.toUpperCase())
-        })
-      )
-  }, [searchInput])
+  const myStock = [{
+    id: 1,
+    name: '카카오',
+    stockNums: 234,
+    currentPrice: 53000,
+    buyPrice: 20300
+  }]
+  // useEffect(() => {
+  //   if (!searchInput.trim()) {
+  //     setSearchData([])
+  //     return
+  //   }
+  //   if (value === 0 && myStock)
+  //     setSearchData(
+  //       myStock.filter((stock: TradeStockItem) => {
+  //         return stock.name.toUpperCase().includes(searchInput.toUpperCase())
+  //       })
+  //     )
+  //   if (value === 1 && wholeStock)
+  //     setSearchData(
+  //       wholeStock.filter((stock: TradeStockItem) => {
+  //         return stock.name.toUpperCase().includes(searchInput.toUpperCase())
+  //       })
+  //     )
+  // }, [searchInput])
 
   useEffect(() => {
     setSearchInput("")
@@ -72,7 +78,7 @@ const TradeStockList = () => {
       />
       {/* 내 종목 */}
       <TradeStockTabPanel value={value} index={0}>
-        {searchInput
+        {/* {searchInput
           ? searchData.map((stock, index) => {
               return (
                 <>
@@ -85,17 +91,18 @@ const TradeStockList = () => {
               )
             })
           : myStock &&
-            myStock.map((stock: TradeStockItem) => {
-              return (
-                <>
-                  <TradeStockItem item={stock} />
-                  <Divider />
-                </>
-              )
-            })}
+        } */}
+        {myStock.map((stock: TradeStockItem) => {
+          return (
+            <>
+              <TradeStockItem item={stock} />
+              <Divider />
+            </>
+        )
+      })}
       </TradeStockTabPanel>
       <TradeStockTabPanel value={value} index={1}>
-        {searchInput
+        {/* {searchInput
           ? searchData.map((stock, index) => {
               return (
                 <>
@@ -118,7 +125,7 @@ const TradeStockList = () => {
                   <Divider key={`wholeStock-${stock.name}-${index}-divider`} />
                 </>
               )
-            })}
+            })} */}
       </TradeStockTabPanel>
       {/* 전체 종목 */}
     </StockContainer>

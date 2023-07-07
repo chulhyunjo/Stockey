@@ -39,25 +39,25 @@ const TradeConfirmModal = ({
     submit(submitList)
   }
 
-  useEffect(() => {
-    if (isSuccess) {
-      queryClient.invalidateQueries({ queryKey: ["oneMinute"] })
-      alert("주문이 제출되었습니다!")
-      confirmModalHandler(false)
-    }
-  }, [isSuccess])
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     queryClient.invalidateQueries({ queryKey: ["oneMinute"] })
+  //     alert("주문이 제출되었습니다!")
+  //     confirmModalHandler(false)
+  //   }
+  // }, [isSuccess])
 
-  useEffect(() => {
-    let formatSellList: SubmitProps[] = []
-    let formatBuyList: SubmitProps[] = []
-    if (sellList) {
-      formatSellList = formatList(sellList, "SELL")
-    }
-    if (buyList) {
-      formatBuyList = formatList(buyList, "BUY")
-    }
-    setSubmitList([...formatSellList, ...formatBuyList])
-  }, [open, sellList, buyList])
+  // useEffect(() => {
+  //   let formatSellList: SubmitProps[] = []
+  //   let formatBuyList: SubmitProps[] = []
+  //   if (sellList) {
+  //     formatSellList = formatList(sellList, "SELL")
+  //   }
+  //   if (buyList) {
+  //     formatBuyList = formatList(buyList, "BUY")
+  //   }
+  //   setSubmitList([...formatSellList, ...formatBuyList])
+  // }, [open, sellList, buyList])
 
   return (
     <DialogContainer open={open}>

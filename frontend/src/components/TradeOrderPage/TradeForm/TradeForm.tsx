@@ -24,10 +24,10 @@ export type BasketList = {
 }
 
 const TradeForm = () => {
-  const { data: myBalance, isSuccess: isSuccessMyBalance } = useMyBalance()
+  // const { data: myBalance, isSuccess: isSuccessMyBalance } = useMyBalance()
 
   // 주문 여부 API
-  const { data: isOrderSubmit, isSuccess: isSuccessCheck } = useCheckOrder()
+  // const { data: isOrderSubmit, isSuccess: isSuccessCheck } = useCheckOrder()
   const [lockTrade, setLockTrade] = useState(false)
   // 판매 목록
   const [sellList, setSellList] = useState<BasketList[]>([])
@@ -51,13 +51,13 @@ const TradeForm = () => {
     return list.value
   }
 
-  useEffect(() => {
-    if (isSuccessCheck) {
-      setLockTrade(isOrderSubmit)
-    }
-    setSellList(getList("sellList"))
-    setBuyList(getList("buyList"))
-  }, [isOrderSubmit])
+  // useEffect(() => {
+  //   if (isSuccessCheck) {
+  //     setLockTrade(isOrderSubmit)
+  //   }
+  //   setSellList(getList("sellList"))
+  //   setBuyList(getList("buyList"))
+  // }, [isOrderSubmit])
 
   // modal에 줄 데이터들
   const [modalData, setModalData] = useState<SimpleDialogProps | undefined>()
@@ -87,7 +87,8 @@ const TradeForm = () => {
       <TradeFormContainer container columns={13} justifyContent="center">
         <TradeFormWrapper item md={6} xs={12}>
           <TradeFormBalance
-            myBalance={isSuccessMyBalance ? myBalance.deposit : 0}
+            // myBalance={isSuccessMyBalance ? myBalance.deposit : 0}
+            myBalance={10030230}
           />
           <TradeStockList />
         </TradeFormWrapper>
@@ -102,7 +103,7 @@ const TradeForm = () => {
             text={"수익"}
             color={"--custom-blue"}
             data={sellList}
-            myBalance={isSuccessMyBalance ? myBalance.deposit : 0}
+            myBalance={10030230}
             modalDataHandler={modalDataHandler}
             listHandler={listHandler}
           />
@@ -111,7 +112,7 @@ const TradeForm = () => {
             text={"지출"}
             color={"--custom-pink-4"}
             data={buyList}
-            myBalance={isSuccessMyBalance ? myBalance.deposit : 0}
+            myBalance={10030230}
             modalDataHandler={modalDataHandler}
             listHandler={listHandler}
           />
